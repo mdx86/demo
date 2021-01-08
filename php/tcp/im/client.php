@@ -1,11 +1,17 @@
 <?php
 error_reporting(E_ERROR);
 
-echo "请输入服务器IP（默认为：127.0.0.1）：";
-$ip = fgets(STDIN);
-$ip = trim($ip);
+$ip = isset($argv[1]) ? $argv[1] : null;
+$port = isset($argv[2]) ? $argv[2] : null;
+
+if (!$ip) {
+    echo "请输入服务器IP（默认为：127.0.0.1）：";
+    $ip = fgets(STDIN);
+    $ip = trim($ip);
+}
+
 $ip = $ip ?: '127.0.0.1';
-$port = 8585;
+$port = $port ?: 8585;
 
 $nickName = '张三';
 
